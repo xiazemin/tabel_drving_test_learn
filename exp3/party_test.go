@@ -3,7 +3,6 @@ package main
 import (
 	"testing"
 
-	"party/greet"
 	mock_greet "party/greet/mock"
 
 	"github.com/golang/mock/gomock"
@@ -34,7 +33,7 @@ func TestPartyService_GreetVisitors(t *testing.T) {
 			},
 			prepare: func(fileds *fields, args *args) {
 				// mockedVisitorLister called once with party.NiceVisitor argument would return []string{"Peter"}, nil
-				fileds.visitorLister.EXPECT().ListVisitors(greet.NiceVisitor).Return([]greet.Visitor{{"Peter", "TheSmart"}}, nil)
+				//fileds.visitorLister.EXPECT().ListVisitors(greet.NiceVisitor).Return([]greet.Visitor{0: greet.Visitor{"Peter", "TheSmart"}}, nil)
 				fileds.greeter.EXPECT().Hello(gomock.Any())
 				// mockedVisitorLister called once with party.NotNiceVisitor argument would return nil and error
 				//mockedVisitorLister.EXPECT().ListVisitors(greet.NotNiceVisitor).Return(nil, fmt.Errorf("dummyErr"))
@@ -50,13 +49,14 @@ func TestPartyService_GreetVisitors(t *testing.T) {
 			prepare: func(fileds *fields, args *args) {
 				// mockedVisitorLister called once with party.NiceVisitor argument would return []string{"Peter"}, nil
 				gomock.InOrder(
-					fileds.visitorLister.EXPECT().ListVisitors(gomock.Any()).Return([]greet.Visitor{{"Peter", "TheSmart"}}, nil).Times(2),
+					//fileds.visitorLister.EXPECT().ListVisitors(gomock.Any()).Return([]greet.Visitor{0: greet.Visitor{"Peter", "TheSmart"}}, nil).Times(2),
 					fileds.greeter.EXPECT().Hello(gomock.Any()).AnyTimes())
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
+		tt := tt
 		ctrl := gomock.NewController(t)
 		// if not all expectations set on the controller are fulfilled at the end of function, the test will fail!
 		defer ctrl.Finish()

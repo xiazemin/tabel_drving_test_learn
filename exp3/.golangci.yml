@@ -1,0 +1,22 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters:
+  enable:
+      - golint
+      - goimports
+      - asciicheck
+      - bodyclose
+      - errorlint
+      - exportloopref
+      - predeclared
+      - scopelint
+      - gosec
+      - nakedret
+
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
