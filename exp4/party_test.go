@@ -31,35 +31,19 @@ func TestPartyService_GreetVisitors(t *testing.T) {
 			prepare: func(fields *fields, args *args) {
 				gomock.InOrder(
 
-					fields.visitorLister.EXPECT().ListVisitors(
-						greet.VisitorGroup{},
-					).Return(
-						[]greet.Visitor{},
-
+					fields.visitorLister.EXPECT().ListVisitors(greet.VisitorGroup{}).Return([]greet.Visitor{},
 						error,
 					).Times(2),
 
-					fields.visitorLister.EXPECT().ListVisitors2(
-						&greet.VisitorGroup{},
-					).Return(
-						[]*greet.Visitor{},
-
+					fields.visitorLister.EXPECT().ListVisitors2(&greet.VisitorGroup{}).Return([]*greet.Visitor{},
 						error,
 					).Times(2),
 
-					fields.greeter.EXPECT().Hello(
-						string,
-					).Return(
-						string,
-					).Times(2),
+					fields.greeter.EXPECT().Hello(string).Return(string).Times(2),
 
-					fields.greeter.EXPECT().Hello1(
+					fields.greeter.EXPECT().Hello1(string,
 						string,
-
-						string,
-					).Return(
-						string,
-
+					).Return(string,
 						string,
 					).Times(2),
 				)
@@ -71,9 +55,7 @@ func TestPartyService_GreetVisitors(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 		tt.fields.visitorLister = mock_greet.NewMockVisitorLister(ctrl)
-
 		tt.fields.greeter = mock_greet.NewMockGreeter(ctrl)
-
 		if tt.prepare != nil {
 			tt.prepare(&tt.fields, &tt.args)
 		}
