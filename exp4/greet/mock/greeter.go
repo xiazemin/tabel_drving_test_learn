@@ -48,6 +48,21 @@ func (mr *MockGreeterMockRecorder) Hello(name interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Hello", reflect.TypeOf((*MockGreeter)(nil).Hello), name)
 }
 
+// Hello1 mocks base method.
+func (m *MockGreeter) Hello1(name1, name2 string) (string, string) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Hello1", name1, name2)
+	ret0, _ := ret[0].(string)
+	ret1, _ := ret[1].(string)
+	return ret0, ret1
+}
+
+// Hello1 indicates an expected call of Hello1.
+func (mr *MockGreeterMockRecorder) Hello1(name1, name2 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Hello1", reflect.TypeOf((*MockGreeter)(nil).Hello1), name1, name2)
+}
+
 // MockVisitorLister is a mock of VisitorLister interface.
 type MockVisitorLister struct {
 	ctrl     *gomock.Controller

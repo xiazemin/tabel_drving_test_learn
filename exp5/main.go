@@ -23,6 +23,7 @@ func main() {
 	// uninterpreted to packages.Load so that it can interpret them
 	// according to the conventions of the underlying build system.
 	cfg := &packages.Config{Mode: packages.NeedFiles | packages.NeedSyntax | packages.NeedName}
+	fmt.Println("args:", flag.Args())
 	pkgs, err := packages.Load(cfg, flag.Args()...)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "load: %v\n", err)

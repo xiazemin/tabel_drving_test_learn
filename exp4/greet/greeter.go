@@ -27,6 +27,7 @@ const (
 //Greeter ...
 type Greeter interface {
 	Hello(name string) string
+	Hello1(name1, name2 string) (string, string)
 }
 
 //VisitorLister ...

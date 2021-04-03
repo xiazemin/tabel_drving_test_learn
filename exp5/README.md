@@ -48,3 +48,7 @@ interface: inter method: Hello
 <nil> tpkg &{67 0x14000182570 <nil>}
 &{<nil> <nil> add 0x140001b82b8 0x14000182720}
 <nil> add &{85 0x14000182660 0x14000182690}
+
+golang.org/x/tools/internal/imports
+
+https://nikodoko.com/posts/goimports_explained/
