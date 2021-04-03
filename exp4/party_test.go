@@ -32,9 +32,17 @@ func TestPartyService_GreetVisitors(t *testing.T) {
 				gomock.InOrder(
 
 					fields.visitorLister.EXPECT().ListVisitors(
-						greet.VisitorGroup,
+						greet.VisitorGroup{},
 					).Return(
-						[]greet.Visitor,
+						[]greet.Visitor{},
+
+						error,
+					).Times(2),
+
+					fields.visitorLister.EXPECT().ListVisitors2(
+						&greet.VisitorGroup{},
+					).Return(
+						[]*greet.Visitor{},
 
 						error,
 					).Times(2),

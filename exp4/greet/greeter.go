@@ -33,4 +33,5 @@ type Greeter interface {
 //VisitorLister ...
 type VisitorLister interface {
 	ListVisitors(who VisitorGroup) ([]Visitor, error)
+	ListVisitors2(who *VisitorGroup) ([]*Visitor, error)
 }
