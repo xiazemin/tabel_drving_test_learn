@@ -1,0 +1,6 @@
+[submodule "go-callvis"]
+	path = go-callvis
+	url = https://github.com/ofabry/go-callvis
+[submodule "go_code_analysis"]
+	path = go_code_analysis
+	url = https://github.com/baixiaoustc/go_code_analysis
